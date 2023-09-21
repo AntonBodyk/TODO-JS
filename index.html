@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div className="todoapp">
+        <h1 className="todoapp__title">todos</h1>
+        <div className="todoapp__content">
+            <header className="todoapp__header">
+                
+                <button type="button" className="todoapp__toggle-all active" />
+      
+                {/* Add a todo on form submit */}
+                <form method="post">
+                  <input
+                    name="title"
+                    type="text"
+                    className="todoapp__new-todo"
+                    placeholder="What needs to be done?"
+                  />
+                </form>
+              </header>
+              <section className="todoapp__main">
+                  <div className="">       {/* ВОТ ТУТ НЕ ПОНЯЛ КАК ЗАРАБОТАЛО, ЧЕСТНО */}
+                      <label className="todo__status-label" >
+                      <input
+                          type="checkbox"
+                          className="todo__status"
+                          checked
+                      />
+                      </label>
+      
+                      <span className="todo__title">Ура</span>
+      
+                      {/* Remove button appears only on hover */}
+                      <button type="button" className="todo__remove">×</button>
+      
+                      {/* overlay will cover the todo while it is being updated */}
+                    <div className="modal overlay">
+                      <div className="modal-background has-background-white-ter" />
+                      <div className="loader" />
+                    </div>
+              </div>
+            </section>
+            <footer className="todoapp__footer">
+                <span className="todo-count">
+                  1
+                </span>
+      
+                {/* Active filter should have a 'selected' class */}
+                <nav className="filter">
+                  
+                </nav>
+      
+                {/* don't show this button if there are no completed todos */}
+                <button type="button" className="todoapp__clear-completed">
+                  Clear completed
+                </button>
+              </footer>
+        </div>
+        
+        {/* Notification is shown in case of any error */}
+        {/* Add the 'hidden' class to hide the message smoothly */}
+      </div>
+</body>
+</html>
