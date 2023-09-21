@@ -8,7 +8,7 @@ iframe {
     margin: 0 auto;
   }
   
-  .notification {
+  /* .notification {
     transition-property: opacity, min-height;
     transition-duration: 1s;
     min-height: 36px;
@@ -18,7 +18,7 @@ iframe {
     min-height: 0;
     opacity: 0;
     pointer-events: none;
-  }
+  } */
   .show{
     display: block
   }
@@ -26,41 +26,11 @@ iframe {
     display: none
   }
   
-  .todo {
-    position: relative;
-    display: grid;
-    grid-template-columns: 45px 1fr;
-    justify-items: stretch;
-    font-size: 24px;
-    line-height: 1.4em;
-    border-bottom: 1px solid #ededed;
-  }
-  .todo:last-child {
-    border-bottom: 0;
-  }
-  .status-label {
-    cursor: pointer;
-    background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center left;
-  }
-  .completed__status-label {
-    background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E");
-  }
-  .status {
-    opacity: 0;
-  }
-  .title {
-    padding: 12px 15px;
-    word-break: break-all;
-    transition: color 0.4s;
-  }
   .todoapp {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 24px;
     font-weight: 300;
-    color: #4d4d4d;
-    margin: 40px 20px;
+    color: greenyellow;
   }
   .todoapp__content {
     margin-bottom: 20px;
@@ -71,12 +41,13 @@ iframe {
     font-size: 100px;
     font-weight: 100;
     text-align: center;
-    color: rgba(175, 47, 47, 0.15);
-    -webkit-text-rendering: optimizeLegibility;
+    color: aqua;
+    /* color: rgba(175, 47, 47, 0.15); */
+    /* -webkit-text-rendering: optimizeLegibility;
     -moz-text-rendering: optimizeLegibility;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility; */
   }
-  .todoapp__header {
+  /* .todoapp__header {
     position: relative;
   }
   .todoapp__toggle-all {
@@ -119,7 +90,7 @@ iframe {
     font-weight: 300;
     color: #e6e6e6;
   }
-  .todoapp .main {
+  .todoapp__main {
     border-top: 1px solid #e6e6e6;
   }
   .todoapp__footer {
@@ -149,6 +120,7 @@ iframe {
     appearance: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: opacity 0.3s;
   }
   .todoapp__clear-completed:hover {
     text-decoration: underline;
@@ -156,5 +128,7 @@ iframe {
   .todoapp__clear-completed:active {
     text-decoration: none;
   }
-
+  .todoapp__clear-completed:disabled {
+    visibility: hidden;
+  } */
 
