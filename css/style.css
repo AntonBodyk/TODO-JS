@@ -191,7 +191,7 @@ body {
   opacity: 1;
 }
 .todo__title-field {
-  width: 100%;
+  width: calc(100% - 38px);
   padding: 11px 14px;
   font-size: inherit;
   line-height: inherit;
