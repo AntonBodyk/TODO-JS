@@ -44,18 +44,13 @@ async function delTodo(id){
     })
 }
 
-
-
 async function updateTodoStatus(id, completed){
-    updateTodo({id: id, completed: !completed})
+    updateTodo({id: id, completed: completed})
     .then(() => {
         console.log(id);
         document.getElementById(`todo_${id}`).classList.toggle(`completed`);
     })
 }
-
-
-
 
 const input = document.querySelector('.todoapp__new-todo');
 
@@ -86,7 +81,7 @@ async function buttonClick(el){
 }
 
 async function statusClick(el){
-    await updateTodoStatus(el.target.getAttribute('todo-id'));
+    await updateTodoStatus(el.target.getAttribute('todo-id'), el.target.checked);
 }
 
 const filterLink = document.querySelectorAll('.filter__link');
@@ -104,33 +99,37 @@ let onClick = function (event) {
 for (let i = 0; i < filterLink.length; i++) {
     filterLink[i].addEventListener('click', onClick, false);
 }
-//       filterElements = document.querySelectorAll('.todo');
-// console.log(filterElements);
 
+document.querySelector('.filter').addEventListener('click', event => {
 
-// async function filterItems(){
-//     filterLink.forEach(link => {
-//         link.addEventListener('click', () => {
-//             console.log(location.hash);
-//             switch(location.hash){
-//                 case '#/':
-//                     break
-//                 case '#/active':
-//                     filterElements.forEach(item => {
-//                         if(item.classList.contains('todo active')){
-//                             item.style.display = 'block';
-//                         }else{
-//                             item.style.display = 'none';
-//                         }
-//                     });
-//                     break
-//                 case '#/completed':
-//                     break
-//             }
-//         });
-//     })
-// }
-// filterItems();
+    if(event.target.tagName !== 'A') return false;
+    const filterElements = document.querySelectorAll('.todo');
+    let filterClass = event.target.dataset['filter'];
+    console.log(filterClass);
+
+    filterElements.forEach(element => {
+        switch (filterClass){
+            case 'active':
+                if(element.classList.contains('completed')){
+                    element.style.display = 'none';
+                }else{
+                    element.style.display = 'grid';
+                }
+                break;
+            case 'completed':
+                if(element.classList.contains('completed')){
+                    element.style.display = 'grid';
+                }else{
+                    element.style.display = 'none';
+                }
+                break;
+            default: 
+                element.style.display = 'grid';
+        }
+        
+
+    });
+});
 
 // function delCompletedTodo(id){
     
