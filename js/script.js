@@ -89,9 +89,24 @@ async function statusClick(el){
     await updateTodoStatus(el.target.getAttribute('todo-id'));
 }
 
-// const filterLink = document.querySelectorAll('.filter__link'),
+const filterLink = document.querySelectorAll('.filter__link');
+
+let onClick = function (event) {
+    event.preventDefault();
+  
+    for (let i = 0; i < filterLink.length; i++) {
+        filterLink[i].classList.remove('selected');
+    }
+  
+    event.currentTarget.classList.add('selected');
+};
+
+for (let i = 0; i < filterLink.length; i++) {
+    filterLink[i].addEventListener('click', onClick, false);
+}
 //       filterElements = document.querySelectorAll('.todo');
 // console.log(filterElements);
+
 
 // async function filterItems(){
 //     filterLink.forEach(link => {
