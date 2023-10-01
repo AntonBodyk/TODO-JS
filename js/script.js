@@ -47,8 +47,7 @@ async function delTodo(id){
 async function updateTodoStatus(id, completed){
     updateTodo({id: id, completed: completed})
     .then(() => {
-        console.log(id);
-        document.getElementById(`todo_${id}`).classList.toggle(`completed`);
+        document.getElementById(`todo_${id}`).classList.toggle('completed');
     })
 }
 
@@ -65,7 +64,6 @@ function addAndRender(inputElement) {
     const todoText = inputElement.value;
     createNewTodo({title: todoText, completed: false})
     .then((response) => {
-        console.log(response);
         todosRender(response.data);
         input.value = '';
         todosCount(document.querySelectorAll('.todo').length);
@@ -105,7 +103,6 @@ document.querySelector('.filter').addEventListener('click', event => {
     if(event.target.tagName !== 'A') return false;
     const filterElements = document.querySelectorAll('.todo');
     let filterClass = event.target.dataset['filter'];
-    console.log(filterClass);
 
     filterElements.forEach(element => {
         switch (filterClass){
@@ -126,25 +123,27 @@ document.querySelector('.filter').addEventListener('click', event => {
             default: 
                 element.style.display = 'grid';
         }
-        
-
     });
 });
 
-// function delCompletedTodo(id){
-    
-//     deleteCompletedTodo(id)
-//     .then(() => {
-//         let deleteElement = document.querySelectorAll('.todo completed').remove();
-//         console.log(deleteElement);
-//     });
-// }
+function delCompletedTodo(){
+    deleteCompletedTodo()
+    .then(()  => {
+        let deleteElement = document.querySelectorAll('.completed');
+        deleteElement.forEach(element => element.remove());
+        todosCount(document.querySelectorAll('.todo').length);
+    });
+}
 
-// const completedDelButton = document.querySelector('.todoapp__clear-completed');
+const completedDelButton = document.querySelector('.todoapp__clear-completed');
 
-// completedDelButton.addEventListener('click', () => {
-//     delCompletedTodo();
-// });
+completedDelButton.addEventListener('click', () => {
+    console.log('click')
+    delCompletedTodo();
+});
+
+
+
 
 document.addEventListener('DOMContentLoaded', () =>{
     
