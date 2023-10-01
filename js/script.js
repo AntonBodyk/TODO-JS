@@ -42,6 +42,9 @@ async function delTodo(id){
         document.getElementById(`todo_${id}`).remove();
         todosCount(document.querySelectorAll('.todo').length);
     })
+    .catch((error) => {
+        console.log(error);
+    });
 }
 
 async function updateTodoStatus(id, completed){
@@ -49,6 +52,9 @@ async function updateTodoStatus(id, completed){
     .then(() => {
         document.getElementById(`todo_${id}`).classList.toggle('completed');
     })
+    .catch((error) => {
+        console.log(error);
+    });
 }
 
 const input = document.querySelector('.todoapp__new-todo');
@@ -71,15 +77,6 @@ function addAndRender(inputElement) {
       .catch((error) => {
         console.log(error);
       });
-}
-
-
-async function buttonClick(el){
-    await delTodo(el.target.getAttribute('todo-id'));
-}
-
-async function statusClick(el){
-    await updateTodoStatus(el.target.getAttribute('todo-id'), el.target.checked);
 }
 
 const filterLink = document.querySelectorAll('.filter__link');
@@ -132,6 +129,9 @@ function delCompletedTodo(){
         let deleteElement = document.querySelectorAll('.completed');
         deleteElement.forEach(element => element.remove());
         todosCount(document.querySelectorAll('.todo').length);
+    })
+    .catch((error) => {
+        console.log(error);
     });
 }
 
@@ -142,22 +142,29 @@ completedDelButton.addEventListener('click', () => {
     delCompletedTodo();
 });
 
+async function buttonClick(el){
+    await delTodo(el.target.getAttribute('todo-id'));
+}
 
+async function statusClick(el){
+    await updateTodoStatus(el.target.getAttribute('todo-id'), el.target.checked);
+}
 
 
 document.addEventListener('DOMContentLoaded', () =>{
     
     getTodos('todos')
     .then(data =>{
-        console.log(data);
         todosCount(data.length);
         
         data.forEach((todo) => {
             todosRender(todo);
         });
+
         document.querySelectorAll('.todo__remove').forEach((el) => {
             el.addEventListener('click', buttonClick);
         });
+
         document.querySelectorAll('.todo__status').forEach((el) => {
             el.addEventListener('click', statusClick);
         });
